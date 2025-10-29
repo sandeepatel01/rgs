@@ -1,296 +1,289 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  Menu,
-  Phone,
-  ChevronDown,
-  Sun,
-  Battery,
-  Zap,
-  Settings,
-  ShoppingCart,
-  Wrench,
-  Lightbulb,
-  Factory,
-} from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import logo from "@/public/assets/rgs.png";
 
-export default function Navbar() {
+const MotionImage = motion(Image);
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [solarOpen, setSolarOpen] = useState(false);
+  const [dgOpen, setDgOpen] = useState(false);
+
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === path;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const solarServices = [
-    {
-      name: "Off-Grid Solar",
-      href: "/off-grid-solar",
-      icon: <Battery className="w-4 h-4" />,
-    },
-    {
-      name: "On-Grid Solar",
-      href: "/on-grid-solar",
-      icon: <Zap className="w-4 h-4" />,
-    },
-    {
-      name: "Hybrid Solar",
-      href: "/hybrid-solar",
-      icon: <Settings className="w-4 h-4" />,
-    },
+    { name: "Off-Grid Solar", path: "/solar/off-grid" },
+    { name: "On-Grid Solar", path: "/solar/on-grid" },
+    { name: "Hybrid Solar", path: "/solar/hybrid" },
   ];
 
-  const dgSolutions = [
-    {
-      name: "DG Installation",
-      href: "/dg-installation",
-      icon: <Factory className="w-4 h-4" />,
-    },
-    {
-      name: "Sell & Purchase",
-      href: "/sell-purchase",
-      icon: <ShoppingCart className="w-4 h-4" />,
-    },
-    {
-      name: "Repairing & Maintenance",
-      href: "/repair-maintenance",
-      icon: <Wrench className="w-4 h-4" />,
-    },
-  ];
-
-  const mobileSolarServices = [
-    {
-      name: "Off-Grid Solar",
-      href: "/off-grid-solar",
-      icon: <Battery className="w-4 h-4" />,
-    },
-    {
-      name: "On-Grid Solar",
-      href: "/on-grid-solar",
-      icon: <Zap className="w-4 h-4" />,
-    },
-    {
-      name: "Hybrid Solar",
-      href: "/hybrid-solar",
-      icon: <Settings className="w-4 h-4" />,
-    },
-  ];
-
-  const mobileDgSolutions = [
-    {
-      name: "DG Installation",
-      href: "/dg-installation",
-      icon: <Factory className="w-4 h-4" />,
-    },
-    {
-      name: "Sell & Purchase",
-      href: "/sell-purchase",
-      icon: <ShoppingCart className="w-4 h-4" />,
-    },
-    {
-      name: "Repairing & Maintenance",
-      href: "/repair-maintenance",
-      icon: <Wrench className="w-4 h-4" />,
-    },
+  const dgServices = [
+    { name: "DG Installation", path: "/dg/installation" },
+    { name: "Sell & Purchase", path: "/dg/sell-purchase" },
+    { name: "Repairing & Maintenance", path: "/dg/maintenance" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-linear-to-r from-[#1E3A8A] via-[#2E7D32] to-[#FDBE34] text-white shadow-lg animate-gradient-slow bg-size-[200%_200%]">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/assets/rgs.png"
-              alt="RG Solar"
-              width={75}
-              height={60}
-              className="object-contain"
-            />
-            <div className="leading-tight">
-              <h1 className="text-lg font-extrabold tracking-wide drop-shadow-md">
-                <span className="text-yellow-300">RG</span>{" "}
-                <span className="text-yellow-400">Solars</span>
-              </h1>
-              <p className="text-[13px] font-medium text-yellow-100 -mt-0.5">
-                Since 2005
-              </p>
-            </div>
-          </Link>
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md shadow-md"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <Link href="/" className="flex items-center space-x-2">
+              <MotionImage
+                src={logo}
+                alt="RG Solars"
+                className="h-16 w-auto"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+            </Link>
+          </motion.div>
 
-          <div className="hidden lg:flex items-center space-x-6">
-            {[
-              {
-                label: "Solar Services",
-                links: solarServices,
-              },
-              {
-                label: "DG Solutions",
-                links: dgSolutions,
-              },
-            ].map((menu) => (
-              <div key={menu.label} className="relative group">
-                <button className="flex items-center gap-1 font-medium text-white hover:text-yellow-300 transition-all duration-200">
-                  {menu.label}
-                  <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
-                </button>
-                <div className="absolute left-0 top-full mt-3 w-64 bg-white/90 backdrop-blur-lg rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2 z-50 border border-yellow-200/30">
-                  {menu.links.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center gap-3 px-4 py-3 text-gray-800 font-medium hover:bg-yellow-50 hover:text-[#FF8C00] transition-colors"
-                    >
-                      <span className="text-blue-600">{item.icon}</span>
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="hidden lg:flex items-center gap-8">
+            <Link
+              href="/"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Home
+            </Link>
 
             <Link
-              href="/why-choose-solar"
-              className="flex items-center gap-1 text-white hover:text-yellow-300 font-medium transition-all"
+              href="/about"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/about") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              About
+            </Link>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setSolarOpen(true)}
+              onMouseLeave={() => setSolarOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+                Solar Services <ChevronDown className="w-4 h-4" />
+              </button>
+              <AnimatePresence>
+                {solarOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg overflow-hidden"
+                  >
+                    {solarServices.map((service) => (
+                      <Link
+                        key={service.path}
+                        href={service.path}
+                        className="block px-4 py-3 text-sm hover:bg-muted transition-colors"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setDgOpen(true)}
+              onMouseLeave={() => setDgOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+                DG Solutions <ChevronDown className="w-4 h-4" />
+              </button>
+              <AnimatePresence>
+                {dgOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-2 w-52 bg-card border border-border rounded-lg shadow-lg overflow-hidden"
+                  >
+                    {dgServices.map((service) => (
+                      <Link
+                        key={service.path}
+                        href={service.path}
+                        className="block px-4 py-3 text-sm hover:bg-muted transition-colors"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link
+              href="/why-solar"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/why-solar") ? "text-primary" : "text-foreground"
+              }`}
             >
               Why Choose Solar
             </Link>
 
             <Link
-              href="/about-us"
-              className="text-white hover:text-yellow-300 font-medium transition-all"
+              href="/contact"
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive("/contact") ? "text-primary" : "text-foreground"
+              }`}
             >
-              About Us
-            </Link>
-
-            <Link
-              href="/contact-us"
-              className="text-white hover:text-yellow-300 font-medium transition-all"
-            >
-              Contact Us
+              Contact
             </Link>
           </div>
 
-          <div className="hidden lg:block">
-            <Button className="bg-yellow-400 hover:bg-yellow-300 text-[#1E3A8A] font-semibold px-6 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
+          <motion.div
+            className="hidden lg:block"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            <Button asChild size="lg" className="font-semibold">
+              <Link href="/contact">
+                <Phone className="w-4 h-4 mr-2" />
+                Call Now
+              </Link>
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="lg:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-lg hover:bg-yellow-300/10 transition-colors p-3"
-                >
-                  <Menu className="h-10 w-10 text-white" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-[85vw] max-w-sm p-0 bg-white border-l border-gray-200 shadow-xl"
-              >
-                <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-linear-to-r from-[#1E3A8A] to-[#2E7D32] text-white">
-                  <div className="flex items-center space-x-3">
-                    <Image
-                      src="/assets/rgs.png"
-                      alt="RGS"
-                      width={45}
-                      height={45}
-                      className="object-cover rounded-lg"
-                    />
-                    <div>
-                      <div className="text-lg font-bold text-yellow-200">
-                        RG SOLAR
-                      </div>
-                      <div className="text-xs text-yellow-100 font-medium">
-                        SINCE 2005
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col h-[calc(100vh-80px)] overflow-y-auto py-4 px-4">
-                  <div className="space-y-6">
-                    {[
-                      {
-                        title: "Solar Services",
-                        links: mobileSolarServices,
-                        icon: <Sun className="w-5 h-5" />,
-                      },
-                      {
-                        title: "DG Solutions",
-                        links: mobileDgSolutions,
-                        icon: <Zap className="w-5 h-5" />,
-                      },
-                    ].map((section) => (
-                      <div
-                        key={section.title}
-                        className="border-b border-gray-100 pb-4"
-                      >
-                        <h3 className="flex items-center gap-2 font-semibold text-gray-800 mb-3 text-lg">
-                          {section.icon}
-                          {section.title}
-                        </h3>
-                        <div className="space-y-2">
-                          {section.links.map((link) => (
-                            <Link
-                              key={link.name}
-                              href={link.href}
-                              onClick={() => setIsOpen(false)}
-                              className="flex items-center gap-3 py-2 px-3 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors font-medium"
-                            >
-                              <span className="text-blue-500">{link.icon}</span>
-                              {link.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-
-                    <div className="space-y-2 pt-2">
-                      <Link
-                        href="/why-choose-solar"
-                        className="flex items-center gap-2 py-2 px-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors font-medium"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Lightbulb className="w-5 h-5" /> Why Choose Solar
-                      </Link>
-
-                      <Link
-                        href="/about-us"
-                        className="block py-2 px-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors font-medium"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        About Us
-                      </Link>
-
-                      <Link
-                        href="/contact-us"
-                        className="block py-2 px-3 text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors font-medium"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Contact Us
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="mt-auto pt-6 border-t border-gray-200">
-                    <Button className="w-full bg-linear-to-r from-[#1E3A8A] to-[#2E7D32] hover:from-[#2E7D32] hover:to-[#1E3A8A] text-white font-semibold py-3 rounded-lg shadow-md transition-all duration-200">
-                      <Phone className="w-5 h-5 mr-2" /> Call Now
-                    </Button>
-                    <p className="text-center text-gray-500 text-sm mt-2">
-                      Get a free consultation
-                    </p>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+          <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden pb-4"
+            >
+              <div className="flex flex-col gap-4">
+                <Link
+                  href="/"
+                  className="text-sm font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  className="text-sm font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  About
+                </Link>
+
+                <div>
+                  <button
+                    onClick={() => setSolarOpen(!solarOpen)}
+                    className="flex items-center gap-1 text-sm font-medium w-full"
+                  >
+                    Solar Services <ChevronDown className="w-4 h-4" />
+                  </button>
+                  {solarOpen && (
+                    <div className="pl-4 mt-2 space-y-2">
+                      {solarServices.map((service) => (
+                        <Link
+                          key={service.path}
+                          href={service.path}
+                          className="block text-sm text-muted-foreground"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <button
+                    onClick={() => setDgOpen(!dgOpen)}
+                    className="flex items-center gap-1 text-sm font-medium w-full"
+                  >
+                    DG Solutions <ChevronDown className="w-4 h-4" />
+                  </button>
+                  {dgOpen && (
+                    <div className="pl-4 mt-2 space-y-2">
+                      {dgServices.map((service) => (
+                        <Link
+                          key={service.path}
+                          href={service.path}
+                          className="block text-sm text-muted-foreground"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {service.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <Link
+                  href="/why-solar"
+                  className="text-sm font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Why Choose Solar
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-sm font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contact
+                </Link>
+
+                <Button asChild className="w-full" size="lg">
+                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call Now
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
-}
+};
+
+export default Navbar;
