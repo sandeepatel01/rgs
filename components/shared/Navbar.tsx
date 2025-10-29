@@ -174,10 +174,10 @@ const Navbar = () => {
             transition={{ delay: 0.6, duration: 0.5 }}
           >
             <Button asChild size="lg" className="font-semibold">
-              <Link href="/contact">
+              <a href="tel:+917880784204" className="flex items-center">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now
-              </Link>
+              </a>
             </Button>
           </motion.div>
 
@@ -272,10 +272,10 @@ const Navbar = () => {
                 </Link>
 
                 <Button asChild className="w-full" size="lg">
-                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                  <a href="tel:+917880784204" className="flex items-center">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </motion.div>

@@ -3,6 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import ClientWrapper from "@/components/shared/ClientWrapper"; // ✅ new client-only wrapper
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -22,9 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Navbar />
-      <body className={`${nunitoSans.variable} antialiased`}>{children}</body>
-      <Footer />
+      <body className={`${nunitoSans.variable} antialiased`}>
+        <Navbar />
+        {children}
+        <Footer />
+        <ClientWrapper />
+      </body>
     </html>
   );
 }
