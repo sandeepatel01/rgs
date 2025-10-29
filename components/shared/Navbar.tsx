@@ -69,7 +69,12 @@ const Navbar = () => {
             </Link>
           </motion.div>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <motion.div
+            className="hidden lg:flex items-center space-x-8"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
             <Link
               href="/"
               className={`text-sm font-medium transition-colors hover:text-primary ${
@@ -165,7 +170,7 @@ const Navbar = () => {
             >
               Contact
             </Link>
-          </div>
+          </motion.div>
 
           <motion.div
             className="hidden lg:block"
