@@ -55,7 +55,6 @@ const OffGridSolar = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-linear-to-br from-[#fbbd23]/10 via-background to-[#3c83f6]/10 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <motion.div
