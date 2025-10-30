@@ -53,7 +53,7 @@ export default function Navbar() {
             <MotionImage
               src={logo}
               alt="RG Solars"
-              className="h-14 w-auto"
+              className="h-20 w-auto"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
@@ -67,7 +67,7 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-lg font-medium transition-colors hover:text-primary ${
                   isActive(item.path) ? "text-primary" : "text-gray-800"
                 }`}
               >
@@ -80,7 +80,7 @@ export default function Navbar() {
               onMouseEnter={() => setSolarOpen(true)}
               onMouseLeave={() => setSolarOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-primary">
+              <button className="flex items-center gap-1 text-lg font-medium text-gray-800 hover:text-primary">
                 Solar Services <ChevronDown className="w-4 h-4" />
               </button>
               <AnimatePresence>
@@ -110,7 +110,7 @@ export default function Navbar() {
               onMouseEnter={() => setDgOpen(true)}
               onMouseLeave={() => setDgOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-primary">
+              <button className="flex items-center gap-1 text-lg font-medium text-gray-800 hover:text-primary">
                 DG Solutions <ChevronDown className="w-4 h-4" />
               </button>
               <AnimatePresence>
@@ -137,7 +137,7 @@ export default function Navbar() {
 
             <Link
               href="/why-solar"
-              className={`text-sm font-medium hover:text-primary ${
+              className={`text-lg font-medium hover:text-primary ${
                 isActive("/why-solar") ? "text-primary" : "text-gray-800"
               }`}
             >
@@ -146,7 +146,7 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className={`text-sm font-medium hover:text-primary ${
+              className={`text-lg font-medium hover:text-primary ${
                 isActive("/contact") ? "text-primary" : "text-gray-800"
               }`}
             >
@@ -266,7 +266,7 @@ export default function Navbar() {
                   className="mt-4 bg-green-600 hover:bg-green-700 text-white rounded-full"
                 >
                   <a
-                    href="tel:+917880784204"
+                    href="tel:+919311641927"
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4 h-4" />
