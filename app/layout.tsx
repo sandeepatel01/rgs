@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "@/components/shared/ClientWrapper";
+import { Toaster } from "@/components/ui/sonner";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={`${nunitoSans.variable} antialiased min-h-screen`}>
         <Navbar />
         {children}
+        <Toaster />
         <Footer />
         <ClientWrapper />
       </body>
