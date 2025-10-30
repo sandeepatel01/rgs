@@ -11,19 +11,17 @@ import logo from "@/public/assets/rgs.png";
 
 const MotionImage = motion(Image);
 
-const Navbar = () => {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [solarOpen, setSolarOpen] = useState(false);
   const [dgOpen, setDgOpen] = useState(false);
-
   const pathname = usePathname();
+
   const isActive = (path: string) => pathname === path;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -42,63 +40,47 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+      transition={{ duration: 0.6, type: "spring", stiffness: 120 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <MotionImage
-                src={logo}
-                alt="RG Solars"
-                className="h-16 w-auto"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-            </Link>
-          </motion.div>
+          <Link href="/" className="flex items-center space-x-2">
+            <MotionImage
+              src={logo}
+              alt="RG Solars"
+              className="h-14 w-auto"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+          </Link>
 
-          <motion.div
-            className="hidden lg:flex items-center space-x-8"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-          >
-            <Link
-              href="/"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/") ? "text-primary" : "text-foreground"
-              }`}
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/about"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/about") ? "text-primary" : "text-foreground"
-              }`}
-            >
-              About
-            </Link>
+          <div className="hidden lg:flex items-center space-x-8">
+            {[
+              { name: "Home", path: "/" },
+              { name: "About", path: "/about" },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  isActive(item.path) ? "text-primary" : "text-gray-800"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
 
             <div
-              className="relative"
+              className="relative group"
               onMouseEnter={() => setSolarOpen(true)}
               onMouseLeave={() => setSolarOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-primary">
                 Solar Services <ChevronDown className="w-4 h-4" />
               </button>
               <AnimatePresence>
@@ -107,13 +89,13 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-lg shadow-lg overflow-hidden"
+                    className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
                   >
                     {solarServices.map((service) => (
                       <Link
                         key={service.path}
                         href={service.path}
-                        className="block px-4 py-3 text-sm hover:bg-muted transition-colors"
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
                       >
                         {service.name}
                       </Link>
@@ -124,11 +106,11 @@ const Navbar = () => {
             </div>
 
             <div
-              className="relative"
+              className="relative group"
               onMouseEnter={() => setDgOpen(true)}
               onMouseLeave={() => setDgOpen(false)}
             >
-              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
+              <button className="flex items-center gap-1 text-sm font-medium text-gray-800 hover:text-primary">
                 DG Solutions <ChevronDown className="w-4 h-4" />
               </button>
               <AnimatePresence>
@@ -137,13 +119,13 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-52 bg-card border border-border rounded-lg shadow-lg overflow-hidden"
+                    className="absolute left-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg"
                   >
                     {dgServices.map((service) => (
                       <Link
                         key={service.path}
                         href={service.path}
-                        className="block px-4 py-3 text-sm hover:bg-muted transition-colors"
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
                       >
                         {service.name}
                       </Link>
@@ -155,8 +137,8 @@ const Navbar = () => {
 
             <Link
               href="/why-solar"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/why-solar") ? "text-primary" : "text-foreground"
+              className={`text-sm font-medium hover:text-primary ${
+                isActive("/why-solar") ? "text-primary" : "text-gray-800"
               }`}
             >
               Why Choose Solar
@@ -164,29 +146,31 @@ const Navbar = () => {
 
             <Link
               href="/contact"
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive("/contact") ? "text-primary" : "text-foreground"
+              className={`text-sm font-medium hover:text-primary ${
+                isActive("/contact") ? "text-primary" : "text-gray-800"
               }`}
             >
               Contact
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="hidden lg:block"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <Button asChild size="lg" className="font-semibold">
-              <a href="tel:+917880784204" className="flex items-center">
-                <Phone className="w-4 h-4 mr-2" />
+          <div className="hidden lg:block">
+            <Button
+              asChild
+              size="lg"
+              className="font-semibold bg-green-600 hover:bg-green-700 text-white rounded-full"
+            >
+              <a href="tel:+917880784204" className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
                 Call Now
               </a>
             </Button>
-          </motion.div>
+          </div>
 
-          <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
@@ -194,44 +178,43 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden pb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="lg:hidden mt-2 bg-white/95 backdrop-blur-md shadow-xl rounded-2xl p-5 border border-gray-100"
             >
               <div className="flex flex-col gap-4">
-                <Link
-                  href="/"
-                  className="text-sm font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-sm font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  About
-                </Link>
+                {[
+                  { name: "Home", path: "/" },
+                  { name: "About", path: "/about" },
+                ].map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-medium text-gray-800 hover:text-primary"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
 
                 <div>
                   <button
                     onClick={() => setSolarOpen(!solarOpen)}
-                    className="flex items-center gap-1 text-sm font-medium w-full"
+                    className="flex items-center justify-between w-full text-base font-medium text-gray-800"
                   >
                     Solar Services <ChevronDown className="w-4 h-4" />
                   </button>
                   {solarOpen && (
                     <div className="pl-4 mt-2 space-y-2">
-                      {solarServices.map((service) => (
+                      {solarServices.map((s) => (
                         <Link
-                          key={service.path}
-                          href={service.path}
-                          className="block text-sm text-muted-foreground"
+                          key={s.path}
+                          href={s.path}
                           onClick={() => setIsOpen(false)}
+                          className="block text-sm text-gray-600 hover:text-primary"
                         >
-                          {service.name}
+                          {s.name}
                         </Link>
                       ))}
                     </div>
@@ -241,20 +224,20 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setDgOpen(!dgOpen)}
-                    className="flex items-center gap-1 text-sm font-medium w-full"
+                    className="flex items-center justify-between w-full text-base font-medium text-gray-800"
                   >
                     DG Solutions <ChevronDown className="w-4 h-4" />
                   </button>
                   {dgOpen && (
                     <div className="pl-4 mt-2 space-y-2">
-                      {dgServices.map((service) => (
+                      {dgServices.map((d) => (
                         <Link
-                          key={service.path}
-                          href={service.path}
-                          className="block text-sm text-muted-foreground"
+                          key={d.path}
+                          href={d.path}
                           onClick={() => setIsOpen(false)}
+                          className="block text-sm text-gray-600 hover:text-primary"
                         >
-                          {service.name}
+                          {d.name}
                         </Link>
                       ))}
                     </div>
@@ -263,22 +246,30 @@ const Navbar = () => {
 
                 <Link
                   href="/why-solar"
-                  className="text-sm font-medium"
+                  className="text-base font-medium text-gray-800 hover:text-primary"
                   onClick={() => setIsOpen(false)}
                 >
                   Why Choose Solar
                 </Link>
+
                 <Link
                   href="/contact"
-                  className="text-sm font-medium"
+                  className="text-base font-medium text-gray-800 hover:text-primary"
                   onClick={() => setIsOpen(false)}
                 >
                   Contact
                 </Link>
 
-                <Button asChild className="w-full" size="lg">
-                  <a href="tel:+917880784204" className="flex items-center">
-                    <Phone className="w-4 h-4 mr-2" />
+                <Button
+                  asChild
+                  size="lg"
+                  className="mt-4 bg-green-600 hover:bg-green-700 text-white rounded-full"
+                >
+                  <a
+                    href="tel:+917880784204"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Phone className="w-4 h-4" />
                     Call Now
                   </a>
                 </Button>
@@ -289,6 +280,4 @@ const Navbar = () => {
       </div>
     </motion.nav>
   );
-};
-
-export default Navbar;
+}
