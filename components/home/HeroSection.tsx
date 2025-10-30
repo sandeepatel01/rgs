@@ -121,8 +121,6 @@ export default function HeroSection() {
                 <Link href="/services">Our Services</Link>
               </Button>
             </motion.div>
-
-            {/* Stats */}
             <motion.div
               variants={itemVariants}
               className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
@@ -153,7 +151,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         animate={{ y: [0, 10, 0] }}
