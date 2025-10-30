@@ -61,54 +61,54 @@ const WhyChooseSolar = () => {
     },
   ];
 
-  const solarVsDiesel = [
+  const solarVsElectricity = [
     {
-      aspect: "Fuel Cost",
-      solar: "₹0 (Sunlight is free)",
-      diesel: "₹90-100 per liter",
+      aspect: "Electricity Cost",
+      solar: "₹0 after setup (Sunlight is free)",
+      grid: "₹6–₹12 per unit, rising every year",
       winner: "solar",
     },
     {
-      aspect: "Operating Cost",
-      solar: "Minimal maintenance",
-      diesel: "High recurring costs",
+      aspect: "Monthly Bills",
+      solar: "Drastically reduced (up to 90%)",
+      grid: "High & keeps increasing",
       winner: "solar",
     },
     {
-      aspect: "Environmental Impact",
-      solar: "Zero emissions",
-      diesel: "High pollution & CO2",
-      winner: "solar",
-    },
-    {
-      aspect: "Noise Level",
-      solar: "Silent operation",
-      diesel: "Loud & disruptive",
-      winner: "solar",
-    },
-    {
-      aspect: "Maintenance",
-      solar: "Very low",
-      diesel: "High & frequent",
-      winner: "solar",
-    },
-    {
-      aspect: "Lifespan",
-      solar: "25-30 years",
-      diesel: "10-15 years",
+      aspect: "Energy Source",
+      solar: "100% Renewable",
+      grid: "Coal, Gas & Non-renewable",
       winner: "solar",
     },
     {
       aspect: "Reliability",
-      solar: "Consistent daily",
-      diesel: "Fuel dependent",
+      solar: "Works even during power cuts (with battery)",
+      grid: "Frequent outages & fluctuations",
       winner: "solar",
     },
     {
-      aspect: "Initial Investment",
-      solar: "Higher upfront",
-      diesel: "Lower upfront",
-      winner: "diesel",
+      aspect: "Environmental Impact",
+      solar: "Zero emissions & eco-friendly",
+      grid: "High CO₂ & pollution",
+      winner: "solar",
+    },
+    {
+      aspect: "Investment Return",
+      solar: "Payback in 3–5 years, then free electricity",
+      grid: "Never-ending expense",
+      winner: "solar",
+    },
+    {
+      aspect: "Ownership",
+      solar: "You own your power source",
+      grid: "You rent power from the utility",
+      winner: "solar",
+    },
+    {
+      aspect: "Government Support",
+      solar: "Up to 40% subsidy, tax benefits",
+      grid: "No subsidy or financial aid",
+      winner: "solar",
     },
   ];
 
@@ -168,8 +168,8 @@ const WhyChooseSolar = () => {
               Why Choose Solar Energy?
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Discover the powerful benefits of switching to solar energy. Save
-              money, protect the environment, and achieve energy independence.
+              Stop renting electricity from the grid, Own your power with solar
+              energy. Save more, live cleaner, and take control of your future.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="shadow-glow">
@@ -187,9 +187,9 @@ const WhyChooseSolar = () => {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Top Reasons to Go Solar"
-            subtitle="Powerful benefits that make solar the smart choice"
+            description="Powerful benefits that make solar the smart choice"
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
@@ -222,17 +222,17 @@ const WhyChooseSolar = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-linear-to-br from-primary/5 to-[#fbbd23]/5">
+      <section className="py-20 bg-linear-to-br from-[#fbbd23]/5 to-[#3c83f6]/5">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Solar vs Diesel Generator"
-            subtitle="See why solar is the clear winner"
+            title="Solar vs Conventional Electricity"
+            description="Understand why solar energy outshines traditional power sources"
           />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto overflow-x-auto"
+            className="max-w-5xl mx-auto overflow-x-auto mt-12"
           >
             <Card className="border-[#fbbd23]/20">
               <CardContent className="p-0">
@@ -244,13 +244,13 @@ const WhyChooseSolar = () => {
                         Solar Power
                       </th>
                       <th className="p-4 text-center font-semibold">
-                        Diesel Generator
+                        Grid Electricity
                       </th>
                       <th className="p-4 text-center font-semibold">Winner</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {solarVsDiesel.map((row, index) => (
+                    {solarVsElectricity.map((row, index) => (
                       <tr
                         key={index}
                         className="border-b border-border last:border-0"
@@ -267,12 +267,12 @@ const WhyChooseSolar = () => {
                         </td>
                         <td
                           className={`p-4 text-center ${
-                            row.winner === "diesel"
+                            row.winner === "grid"
                               ? "bg-secondary/5 font-semibold text-[#3c83f6]"
                               : "text-muted-foreground"
                           }`}
                         >
-                          {row.diesel}
+                          {row.grid}
                         </td>
                         <td className="p-4 text-center">
                           {row.winner === "solar" ? (
@@ -281,7 +281,7 @@ const WhyChooseSolar = () => {
                             </span>
                           ) : (
                             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-muted">
-                              ⚙️
+                              ⚡
                             </span>
                           )}
                         </td>
@@ -295,13 +295,42 @@ const WhyChooseSolar = () => {
         </div>
       </section>
 
+      <section className="py-16 bg-background">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <Card className="border-[#fbbd23]/20 bg-linear-to-br from-[#fbbd23]/5 to-[#3c83f6]/5 p-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-linear-to-r from-[#fbbd23] via-[#3c83f6] to-primary bg-clip-text text-transparent">
+              The Smarter Choice for a Brighter Future
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Why pay rising electricity bills forever when you can generate
+              your own clean energy? Solar isn’t just a smart investment, it’s a
+              lifestyle upgrade that gives you freedom, security, and pride in
+              helping the planet.
+            </p>
+            <div className="flex justify-center gap-4">
+              <Button asChild size="lg" className="shadow-glow">
+                <Link href="/contact">Switch to Solar Today</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/contact">Calculate Your Savings</Link>
+              </Button>
+            </div>
+          </Card>
+        </motion.div>
+      </section>
+
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Environmental Impact"
-            subtitle="Make a real difference for our planet"
+            description="Make a real difference for our planet"
           />
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12 mt-12">
             {environmentalImpact.map((item, index) => (
               <motion.div
                 key={index}
@@ -327,27 +356,6 @@ const WhyChooseSolar = () => {
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <Card className="border-primary/20 bg-linear-to-br from-[#fbbd23]/5 to-[#3c83f6]/5">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-center">
-                  Join the Clean Energy Revolution
-                </h3>
-                <p className="text-lg text-center text-muted-foreground">
-                  Every solar installation contributes to a cleaner, healthier
-                  planet. By choosing solar, you&apos;re not just saving
-                  money—you&apos;re actively fighting climate change and
-                  preserving the environment for future generations.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
@@ -355,9 +363,9 @@ const WhyChooseSolar = () => {
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Financial Benefits"
-            subtitle="Solar energy is a smart financial investment"
+            description="Solar energy is a smart financial investment"
           />
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mt-12">
             <div className="grid md:grid-cols-2 gap-4">
               {financialBenefits.map((benefit, index) => (
                 <motion.div
@@ -376,59 +384,6 @@ const WhyChooseSolar = () => {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <Card className="border-primary/20 bg-linear-to-br from-primary/5 to-[#fbbd23]/5">
-              <CardContent className="p-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Calculate Your Savings
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Find out exactly how much you can save with solar energy. Get
-                  a personalized analysis based on your electricity consumption
-                  and location.
-                </p>
-                <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="p-4 rounded-lg bg-background">
-                    <div className="text-3xl font-bold text-[#fbbd23] mb-2">
-                      70-90%
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Bill Reduction
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-background">
-                    <div className="text-3xl font-bold text-[#fbbd23] mb-2">
-                      3-5 years
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Payback Period
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-background">
-                    <div className="text-3xl font-bold text-[#fbbd23] mb-2">
-                      25+ years
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Free Electricity
-                    </p>
-                  </div>
-                </div>
-                <Button asChild size="lg" className="shadow-glow">
-                  <Link href="/contact">Get Your Custom Savings Report</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
