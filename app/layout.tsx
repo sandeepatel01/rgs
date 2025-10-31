@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "Rajput Genset & Solar",
   description:
     "Rajput Genset & Solar is a company that specializes in the sale of Rajput Genset and Solar products in the Indian market.",
+  icons: {
+    icon: "/assets/favicon.ico",
+  },
 };
 
 export default function RootLayout({
