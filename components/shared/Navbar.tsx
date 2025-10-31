@@ -49,14 +49,22 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3">
             <MotionImage
               src={logo}
               alt="RG Solars"
-              className="h-20 w-auto"
+              className="h-16 w-auto"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
+            <div className="flex flex-col leading-tight">
+              <span className="text-2xl font-bold text-gray-900 tracking-tight">
+                RG Solar
+              </span>
+              <span className="text-xs text-gray-500 font-medium">
+                Since 2005
+              </span>
+            </div>
           </Link>
 
           <div className="hidden lg:flex items-center space-x-8">
@@ -160,7 +168,7 @@ export default function Navbar() {
               size="lg"
               className="font-semibold bg-green-600 hover:bg-green-700 text-white rounded-full"
             >
-              <a href="tel:+917880784204" className="flex items-center gap-2">
+              <a href="tel:+919818585335" className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>

@@ -127,7 +127,6 @@ const Repairing = () => {
       features: [
         "All Standard AMC features",
         "24/7 breakdown support",
-        "Free spare parts (upto ₹5000)",
         "Fuel quality testing",
         "Comprehensive report",
         "Onsite engineer visit",
@@ -192,8 +191,8 @@ const Repairing = () => {
               DG Repair & Maintenance
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Expert repair and maintenance services for all brands of diesel
-              generators. 24/7 emergency support with comprehensive AMC plans.
+              Expert repair and maintenance services of diesel generators. 24/7
+              emergency support with comprehensive AMC plans.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="shadow-glow">
@@ -328,9 +327,9 @@ const Repairing = () => {
                       </p>
                       <p className="font-semibold">{plan.ideal}</p>
                     </div>
-                    <Button asChild className="w-full mt-6">
+                    {/* <Button asChild className="w-full mt-6">
                       <Link href="/contact">Choose Plan</Link>
-                    </Button>
+                    </Button> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -385,35 +384,6 @@ const Repairing = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <Card className="border-primary/20 bg-linear-to-br from-primary/5 to-[#fbbd23]/5">
-              <CardContent className="p-8">
-                <Phone className="w-16 h-16 mx-auto mb-4 text-primary" />
-                <h2 className="text-3xl font-bold mb-4">
-                  24/7 Emergency Support
-                </h2>
-                <p className="text-lg text-muted-foreground mb-6">
-                  DG breakdown? We provide round-the-clock emergency repair
-                  services to get your generator back up and running quickly.
-                </p>
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <Button asChild size="lg" className="shadow-glow">
-                    <Link href="/contact">Call Emergency Support</Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 

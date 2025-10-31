@@ -56,11 +56,6 @@ const DGInstallation = () => {
         "Our engineers visit your location to assess power requirements, space availability, and environmental factors.",
     },
     {
-      title: "System Design",
-      description:
-        "Custom DG system design based on your load requirements, including capacity planning and backup duration.",
-    },
-    {
       title: "Approval & Permits",
       description:
         "We handle all regulatory approvals, pollution control board clearances, and necessary permits.",
@@ -87,15 +82,6 @@ const DGInstallation = () => {
     { range: "30-100 KVA", ideal: "Medium businesses, restaurants" },
     { range: "125-500 KVA", ideal: "Large commercial buildings" },
     { range: "500+ KVA", ideal: "Industrial facilities, hospitals" },
-  ];
-
-  const compliance = [
-    "Pollution Control Board (PCB) clearance",
-    "Fire safety compliance",
-    "Electrical safety inspections",
-    "Noise level regulations",
-    "Fuel storage guidelines",
-    "Environmental impact assessment",
   ];
 
   return (
@@ -317,37 +303,6 @@ const DGInstallation = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Regulatory Compliance"
-            description="We handle all approvals and certifications"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto mt-12"
-          >
-            <Card className="border-primary/20">
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-4">
-                  {compliance.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-3 p-3 rounded-lg bg-primary/5"
-                    >
-                      <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       <section className="py-20 bg-linear-to-r from-primary via-[#fbbd23] to-[#3c83f6] relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <motion.div
@@ -361,7 +316,7 @@ const DGInstallation = () => {
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Get professional installation with complete turnkey solutions.
-            Contact us for a free site survey.
+            Contact us for a site survey.
           </p>
           <Button asChild size="lg" variant="secondary" className="shadow-glow">
             <Link href="/contact">Schedule Site Assessment</Link>

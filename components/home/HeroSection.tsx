@@ -96,7 +96,7 @@ export default function HeroSection() {
               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             >
               Leading provider of solar panel installations and DG solutions
-              across India. Trusted by 5000+ customers since 2005.
+              across India. Trusted by 1000+ customers since 2005.
             </motion.p>
 
             <motion.div
@@ -118,7 +118,7 @@ export default function HeroSection() {
                 variant="outline"
                 className="text-lg px-8 h-14"
               >
-                <Link href="/services">Our Services</Link>
+                <Link href="/dg/installation">Our Services</Link>
               </Button>
             </motion.div>
             <motion.div
@@ -126,9 +126,9 @@ export default function HeroSection() {
               className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
             >
               {[
-                { number: "5000+", label: "Happy Clients" },
+                { number: "1000+", label: "Happy Clients" },
                 { number: "15+", label: "Years Experience" },
-                { number: "50MW+", label: "Installed Capacity" },
+                { number: "150+", label: "Installed Plants" },
                 { number: "24/7", label: "Support" },
               ].map((stat, index) => (
                 <motion.div

@@ -101,11 +101,11 @@ const About = () => {
                 trusted renewable energy companies.
               </p>
               <p>
-                Over the years, we&apos;ve installed thousands of solar systems
-                and DG solutions across the country, helping our clients reduce
+                Over the years, we&apos;ve installed multiple solar systems and
+                DG solutions across the country, helping our clients reduce
                 their carbon footprint while saving significantly on energy
                 costs. Our commitment to quality, innovation, and customer
-                satisfaction has earned us the trust of over 5,000 satisfied
+                satisfaction has earned us the trust of over 1,000 satisfied
                 customers.
               </p>
               <p>
@@ -138,11 +138,10 @@ const About = () => {
                   <CardTitle className="text-3xl">Our Vision</CardTitle>
                 </CardHeader>
                 <CardContent className="text-lg text-muted-foreground">
-                  To be India&apos;s most trusted and innovative renewable
-                  energy company, leading the transformation towards a
-                  sustainable energy future for all. We envision a world where
-                  clean energy is not just accessible but the preferred choice
-                  for every home and business.
+                  To be India&apos;s most trusted and innovative power solution
+                  company, leading the transformation towards a sustainable
+                  energy future for all. We envision a world where we can
+                  provide uninterruptible energy.
                 </CardContent>
               </Card>
             </motion.div>
@@ -201,7 +200,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
+      {/* <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             subtitle="Our Journey"
@@ -234,7 +233,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

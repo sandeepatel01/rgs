@@ -51,20 +51,7 @@ const SellPurchase = () => {
     },
   ];
 
-  const brands = [
-    "Cummins",
-    "Kirloskar",
-    "Mahindra",
-    "Ashok Leyland",
-    "Greaves",
-    "KOEL",
-    "Sudhir",
-    "Powerica",
-    "Escorts",
-    "Volvo Penta",
-    "Perkins",
-    "Caterpillar",
-  ];
+  const brands = ["Cummins", "Sudhir"];
 
   const dgTypes = [
     {
@@ -75,7 +62,7 @@ const SellPurchase = () => {
         "Energy efficient technology",
         "Silent operation options",
       ],
-      priceRange: "₹80,000 - ₹50,00,000+",
+      // priceRange: "₹80,000 - ₹50,00,000+",
     },
     {
       title: "Used DG Sets",
@@ -85,7 +72,7 @@ const SellPurchase = () => {
         "Extended warranty options",
         "30-70% cost savings",
       ],
-      priceRange: "₹25,000 - ₹20,00,000+",
+      // priceRange: "₹25,000 - ₹20,00,000+",
     },
     {
       title: "Refurbished DG Sets",
@@ -95,7 +82,7 @@ const SellPurchase = () => {
         "Performance guarantee",
         "Like-new condition",
       ],
-      priceRange: "₹40,000 - ₹30,00,000+",
+      // priceRange: "₹40,000 - ₹30,00,000+",
     },
   ];
 
@@ -208,9 +195,6 @@ const SellPurchase = () => {
                     <h3 className="text-2xl font-bold mb-4 text-primary">
                       {type.title}
                     </h3>
-                    <div className="text-2xl font-bold text-[#fbbd23] mb-4">
-                      {type.priceRange}
-                    </div>
                     <ul className="space-y-2 mb-6">
                       {type.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2">
@@ -221,9 +205,9 @@ const SellPurchase = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button asChild className="w-full">
+                    {/* <Button asChild className="w-full">
                       <Link href="/contact">View Available Units</Link>
-                    </Button>
+                    </Button> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -235,8 +219,8 @@ const SellPurchase = () => {
       <section className="py-20 bg-linear-to-br from-[#3c83f6]/5 to-[#fbbd23]/5">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Available Brands"
-            description="We deal in all major DG set brands"
+            title="Our Notable Clients"
+            description="Trusted by leading organizations across India"
           />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -345,16 +329,8 @@ const SellPurchase = () => {
                 description: "Fully functional generators in good condition",
               },
               {
-                title: "Non-Working Units",
-                description: "Faulty generators that need repairs",
-              },
-              {
                 title: "Old Generators",
                 description: "Outdated models and vintage units",
-              },
-              {
-                title: "Damaged Units",
-                description: "Generators with mechanical issues",
               },
             ].map((item, index) => (
               <motion.div

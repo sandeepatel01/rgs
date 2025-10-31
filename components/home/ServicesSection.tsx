@@ -103,7 +103,7 @@ export default function ServicesSection() {
                 asChild
                 className="group-hover:translate-x-2 transition-transform bg-[#3c83f6] hover:bg-[#3c83f6]/90"
               >
-                <Link href="/services#solar">
+                <Link href="/solar/off-grid">
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
@@ -153,7 +153,7 @@ export default function ServicesSection() {
                 asChild
                 className="group-hover:translate-x-2 transition-transform bg-[#3c83f6] hover:bg-[#3c83f6]/90"
               >
-                <Link href="/services#dg">
+                <Link href="/dg/installation">
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>

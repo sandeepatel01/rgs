@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Image src={logo} alt="RG Solars" className="h-16 w-auto" />
+            <Image src={logo} alt="RG Solars" className="h-20 w-auto" />
             <p className="text-sm text-muted-foreground">
               Powering India with clean and reliable energy solutions since
               2005.
@@ -59,18 +59,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href="/dg/installation"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Projects
                 </Link>
               </li>
               <li>
@@ -102,16 +94,17 @@ const Footer = () => {
               <li className="flex items-start space-x-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
                 <span className="text-sm">
-                  123 Solar Street, Energy Park, New Delhi, India - 110001
+                  149/4 Lakhpat colony part -1,Mithapur, Badarpur New Delhi
+                  110044
                 </span>
               </li>
               <li className="flex items-center space-x-3 text-muted-foreground">
                 <Phone className="w-5 h-5 shrink-0" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">+91 98185 85335</span>
               </li>
               <li className="flex items-center space-x-3 text-muted-foreground">
                 <Mail className="w-5 h-5 shrink-0" />
-                <span className="text-sm">info@rgsolars.com</span>
+                <span className="text-sm">info@rgsolars.in</span>
               </li>
             </ul>
           </div>

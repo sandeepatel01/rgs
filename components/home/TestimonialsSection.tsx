@@ -9,19 +9,19 @@ export default function TestimonialsSection() {
       name: "Rajesh Kumar",
       role: "Homeowner, Delhi",
       content:
-        "RG Solars installed a 5kW system at my home. My electricity bills have reduced by 80%. Excellent service!",
+        "RG Solars installed a 5kW system at my home. My electricity bills have reduced by 85%. Excellent service!",
       rating: 5,
     },
     {
-      name: "Priya Sharma",
-      role: "Business Owner, Mumbai",
+      name: "Sandeep Patel",
+      role: "Business Owner, Delhi",
       content:
         "Their DG solutions are top-notch. We've had zero downtime since installation. Highly professional team.",
-      rating: 5,
+      rating: 4,
     },
     {
-      name: "Amit Patel",
-      role: "Factory Manager, Ahmedabad",
+      name: "Piyush Kumar Gautam",
+      role: "Factory Manager, Delhi",
       content:
         "Best solar company in India! They handled our large industrial project perfectly. Great ROI.",
       rating: 5,

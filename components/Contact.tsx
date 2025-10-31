@@ -10,43 +10,71 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
+
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast.success("Message Sent!", {
-        description: "We'll get back to you within 24 hours.",
-      });
-      setFormData({ name: "", email: "", phone: "", message: "" });
+    try {
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT as string,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (response.ok) {
+        toast.success("Message Sent!", {
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        toast.error("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["123 Solar Street, Energy Park", "New Delhi, India - 110001"],
+      details: [
+        "149/4 Lakhpat colony part -1",
+        "Mithapur, Badarpur New Delhi 110044",
+      ],
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 98765 43210", "+91 98765 43211"],
+      details: ["+91 98185 85335", "+91 93116 41927"],
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@rgsolars.com", "support@rgsolars.com"],
+      details: ["info@rgsolars.in"],
     },
     {
       icon: Clock,
@@ -136,6 +164,7 @@ const Contact = () => {
                     className="h-12"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
@@ -155,6 +184,7 @@ const Contact = () => {
                     className="h-12"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="phone"
@@ -174,6 +204,7 @@ const Contact = () => {
                     className="h-12"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="message"
@@ -192,6 +223,7 @@ const Contact = () => {
                     className="min-h-[150px]"
                   />
                 </div>
+
                 <Button
                   type="submit"
                   size="lg"
@@ -254,7 +286,7 @@ const Contact = () => {
             </p>
             <Button size="lg" className="text-lg px-8 h-14">
               <Phone className="mr-2 w-5 h-5" />
-              Call Now: +91 98765 43210
+              Call Now: +91 98185 85335
             </Button>
           </motion.div>
         </div>

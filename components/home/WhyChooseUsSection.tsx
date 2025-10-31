@@ -17,7 +17,7 @@ export default function WhyChooseUsSection() {
     },
     {
       icon: Users,
-      title: "5000+ Happy Clients",
+      title: "1000+ Happy Clients",
       description: "Pan-India presence",
     },
     {

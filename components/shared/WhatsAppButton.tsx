@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function WhatsAppButton() {
-  const phoneNumber = "917880784204";
+  const phoneNumber = "919818585335";
   const message = "Hi! I'm interested in your solar and DG solutions.";
 
   return (
