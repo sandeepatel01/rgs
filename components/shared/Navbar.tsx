@@ -168,7 +168,7 @@ export default function Navbar() {
               size="lg"
               className="font-semibold bg-green-600 hover:bg-green-700 text-white rounded-full"
             >
-              <a href="tel:+919818585335" className="flex items-center gap-2">
+              <a href="tel:+919810085335" className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>
@@ -274,7 +274,7 @@ export default function Navbar() {
                   className="mt-4 bg-green-600 hover:bg-green-700 text-white rounded-full"
                 >
                   <a
-                    href="tel:+919311641927"
+                    href="tel:+919810085335"
                     className="flex items-center justify-center gap-2"
                   >
                     <Phone className="w-4 h-4" />

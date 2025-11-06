@@ -60,7 +60,7 @@ export default function HeroSection() {
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
               >
-                ⚡ Since 2005 - 15+ Years of Excellence
+                ⚡ Since 2005 - 19+ Years of Excellence
               </motion.span>
             </motion.div>
 
@@ -109,17 +109,18 @@ export default function HeroSection() {
                 className="text-lg px-8 h-14 shadow-lg hover:shadow-xl"
               >
                 <Link href="/contact">
-                  Get Free Quote <ArrowRight className="ml-2 w-5 h-5" />
+                  Reduce Your Electricity Bill{" "}
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button
+              {/* <Button
                 asChild
                 size="lg"
                 variant="outline"
                 className="text-lg px-8 h-14"
               >
                 <Link href="/dg/installation">Our Services</Link>
-              </Button>
+              </Button> */}
             </motion.div>
             <motion.div
               variants={itemVariants}
@@ -127,7 +128,7 @@ export default function HeroSection() {
             >
               {[
                 { number: "1000+", label: "Happy Clients" },
-                { number: "15+", label: "Years Experience" },
+                { number: "19+", label: "Years Experience" },
                 { number: "150+", label: "Installed Plants" },
                 { number: "24/7", label: "Support" },
               ].map((stat, index) => (

@@ -12,7 +12,7 @@ export default function WhyChooseUsSection() {
   const whyChooseUs = [
     {
       icon: Shield,
-      title: "15+ Years Experience",
+      title: "19+ Years Experience",
       description: "Trusted since 2005",
     },
     {

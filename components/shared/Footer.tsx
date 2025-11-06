@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Twitter,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+} from "lucide-react";
 import logo from "@/public/assets/rgs.png";
 
 const Footer = () => {
@@ -27,7 +35,7 @@ const Footer = () => {
                 href="#"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <Twitter className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
@@ -112,7 +120,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} RG Solars. All rights reserved.
+            &copy; {new Date().getFullYear()} RG Solar. All rights reserved.
           </p>
         </div>
       </div>
