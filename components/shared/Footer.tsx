@@ -44,13 +44,15 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <Link
-                href="#"
+                target="blank"
+                href="https://www.facebook.com/profile.php?id=61583815526165"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </Link>
               <Link
-                href="#"
+                target="blank"
+                href="https://www.instagram.com/rg_solars?igsh=dTZyYnZhNW9nZm80"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Instagram className="w-5 h-5" />
