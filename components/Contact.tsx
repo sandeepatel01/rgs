@@ -32,14 +32,13 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT as string,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
 
       if (response.ok) {
         toast.success("Message Sent!", {
@@ -47,7 +46,7 @@ const Contact = () => {
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
-        toast.error("Failed to send message. Please try again later.");
+        toast.error(data.message || "Failed to send message");
       }
     } catch (error) {
       console.error(error);
@@ -62,14 +61,14 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       details: [
-        "149/4 Lakhpat colony part -1",
-        "Mithapur, Badarpur New Delhi 110044",
+        "149/4 Lakhpat Colony Part-1",
+        "Mithapur, Badarpur, New Delhi 110044",
       ],
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+91 98185 85335", "+919810085335"],
+      details: ["+91 98185 85335", "+91 98100 85335"],
     },
     {
       icon: Mail,
@@ -167,26 +166,6 @@ const Contact = () => {
 
                 <div>
                   <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email Address *
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    placeholder="your@email.com"
-                    className="h-12"
-                  />
-                </div>
-
-                <div>
-                  <label
                     htmlFor="phone"
                     className="block text-sm font-medium mb-2"
                   >
@@ -201,6 +180,26 @@ const Contact = () => {
                       setFormData({ ...formData, phone: e.target.value })
                     }
                     placeholder="+91 98765 43210"
+                    className="h-12"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    Email Address *
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    placeholder="your@email.com"
                     className="h-12"
                   />
                 </div>
@@ -227,7 +226,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full"
+                  className="w-full cursor-pointer"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -284,7 +283,7 @@ const Contact = () => {
               Join thousands of satisfied customers who&apos;ve made the smart
               choice for sustainable energy
             </p>
-            <Button size="lg" className="text-lg px-8 h-14">
+            <Button size="lg" className="text-lg px-8 h-14 cursor-pointer">
               <Phone className="mr-2 w-5 h-5" />
               Call Now: +91 98185 85335
             </Button>

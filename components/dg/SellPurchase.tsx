@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import SectionHeader from "../shared/SectionHeader";
 
 const SellPurchase = () => {
@@ -51,7 +52,23 @@ const SellPurchase = () => {
     },
   ];
 
-  const brands = ["Cummins", "Sudhir"];
+  const brands = [
+    {
+      logo: "/assets/fimi.jpg",
+    },
+    {
+      logo: "/assets/iilm.jpg",
+    },
+    {
+      logo: "/assets/nv.jpg",
+    },
+    {
+      logo: "/assets/tata.jpg",
+    },
+    {
+      logo: "/assets/rockman.jpg",
+    },
+  ];
 
   const dgTypes = [
     {
@@ -62,7 +79,6 @@ const SellPurchase = () => {
         "Energy efficient technology",
         "Silent operation options",
       ],
-      // priceRange: "₹80,000 - ₹50,00,000+",
     },
     {
       title: "Used DG Sets",
@@ -72,7 +88,6 @@ const SellPurchase = () => {
         "Extended warranty options",
         "30-70% cost savings",
       ],
-      // priceRange: "₹25,000 - ₹20,00,000+",
     },
     {
       title: "Refurbished DG Sets",
@@ -82,7 +97,6 @@ const SellPurchase = () => {
         "Performance guarantee",
         "Like-new condition",
       ],
-      // priceRange: "₹40,000 - ₹30,00,000+",
     },
   ];
 
@@ -205,9 +219,6 @@ const SellPurchase = () => {
                         </li>
                       ))}
                     </ul>
-                    {/* <Button asChild className="w-full">
-                      <Link href="/contact">View Available Units</Link>
-                    </Button> */}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -230,17 +241,24 @@ const SellPurchase = () => {
           >
             <Card className="border-primary/20">
               <CardContent className="p-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 place-items-center">
                   {brands.map((brand, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                      className="p-4 rounded-lg bg-linear-to-br from-primary/5 to-[#fbbd23]/5 text-center font-semibold hover:shadow-glow transition-all duration-300"
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex flex-col items-center justify-center p-4 rounded-lg bg-linear-to-br from-primary/5 to-[#fbbd23]/5 hover:shadow-glow transition-all duration-300 grayscale hover:grayscale-0"
                     >
-                      {brand}
+                      <div className="relative w-28 h-16 mb-2">
+                        <Image
+                          src={brand.logo}
+                          alt="Brand Logo"
+                          fill
+                          className="object-contain cursor-pointer"
+                        />
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -310,44 +328,6 @@ const SellPurchase = () => {
                 {index < sellingProcess.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-linear-to-r from-[#3c83f6] to-[#fbbd23]"></div>
                 )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-linear-to-br from-primary/5 to-[#3c83f6]/5">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="What We Buy"
-            description="We purchase all types and conditions of diesel generators"
-          />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mt-12">
-            {[
-              {
-                title: "Working DG Sets",
-                description: "Fully functional generators in good condition",
-              },
-              {
-                title: "Old Generators",
-                description: "Outdated models and vintage units",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full text-center border-primary/20 hover:shadow-glow transition-all duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2 text-primary">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
               </motion.div>
             ))}
           </div>
