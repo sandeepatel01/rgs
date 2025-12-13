@@ -189,12 +189,11 @@ const Contact = () => {
                     htmlFor="email"
                     className="block text-sm font-medium mb-2"
                   >
-                    Email Address *
+                    Email Address
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    required
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -209,11 +208,10 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium mb-2"
                   >
-                    Message *
+                    Message
                   </label>
                   <Textarea
                     id="message"
-                    required
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
