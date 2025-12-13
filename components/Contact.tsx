@@ -185,39 +185,29 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Email Address
+                  <label className="block text-sm font-medium mb-2">
+                    Email (optional)
                   </label>
                   <Input
-                    id="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="your@email.com"
-                    className="h-12"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Message
+                  <label className="block text-sm font-medium mb-2">
+                    Message (optional)
                   </label>
                   <Textarea
-                    id="message"
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    placeholder="Tell us about your project requirements..."
-                    className="min-h-[150px]"
+                    placeholder="Tell us about your requirement..."
                   />
                 </div>
 
