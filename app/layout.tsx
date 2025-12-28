@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import ClientWrapper from "@/components/shared/ClientWrapper";
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Rajput Genset & Solar provides reliable uninterrupted power solution across india  solutions for residential, commercial, and industrial use across India.",
+    "Rajput Genset & Solar provides reliable uninterrupted power solution across india solutions for residential, commercial, and industrial use across India.",
 
   keywords: [
     "DG Set supplier",
@@ -103,6 +105,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-23PX35F7RB"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-23PX35F7RB');
+          `}
+        </Script>
+      </head>
+
       <body className={`${nunitoSans.variable} antialiased min-h-screen`}>
         <Navbar />
         {children}
