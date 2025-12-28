@@ -119,6 +119,19 @@ export default function RootLayout({
             gtag('config', 'G-23PX35F7RB');
           `}
         </Script>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Rajput Genset & Solar",
+              url: "https://www.rgsolars.in",
+              logo: "https://www.rgsolars.in/assets/rgs.png",
+            }),
+          }}
+        />
       </head>
 
       <body className={`${nunitoSans.variable} antialiased min-h-screen`}>
