@@ -79,23 +79,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
   },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Rajput Genset & Solar",
-    description:
-      "DG Set and Solar Power Solutions for Home, Business & Industry.",
-    images: ["/assets/rgs.png"],
-  },
-
-  icons: {
-    icon: "/assets/favicon.ico",
-    apple: "/assets/rgs.png",
-  },
-
-  alternates: {
-    canonical: "https://www.rgsolars.in",
-  },
 };
 
 export default function RootLayout({
