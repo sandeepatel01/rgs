@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     template: "Rajput Genset & Solar",
   },
 
+  icons: {
+    icon: [{ url: "/favicon.ico" }],
+    apple: "/favicon.ico",
+  },
+
   description:
     "Rajput Genset & Solar provides reliable uninterrupted power solution across india solutions for residential, commercial, and industrial use across India.",
 
